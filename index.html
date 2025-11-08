@@ -3,397 +3,383 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Prelims Precise – History & Polity 2025</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
+<title>Prelims Mock – History & Polity 2025 (Single Page)</title>
 <style>
-  :root{--bg:#f6f5f3;--card:#fff;--muted:#6b7280;--accent:#7b5cff}
-  body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg);margin:0;color:#0f172a}
-  header{display:flex;justify-content:space-between;align-items:center;background:var(--card);border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,0.06);padding:12px 16px;position:sticky;top:0;z-index:40;margin:14px}
-  header h1{margin:0;font-size:18px}
-  .timer{color:#b91c1c;font-weight:700}
-  .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:18px;padding:18px}
-  .main{overflow:auto;padding-right:8px}
-  .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,0.04);border:1px solid #f0f0f3}
-  #start-card{text-align:center}
-  input[type=text]{width:72%;padding:10px;border:1px solid #e8e8ef;border-radius:8px;margin-bottom:12px}
-  button{cursor:pointer;border:none;border-radius:8px;font-weight:600}
-  .btn{background:linear-gradient(180deg,#7b5cff,#5a43d9);color:#fff;padding:10px 14px}
-  .ghost{background:transparent;border:1px solid #ddd;padding:8px 10px}
-  .question{background:var(--card);padding:14px;border-radius:10px;margin-bottom:14px;box-shadow:0 6px 18px rgba(15,23,42,0.04);border:1px solid #f0f0f3}
-  .question h3{margin:0 0 10px;font-size:15px}
-  label.option{display:block;padding:10px;border-radius:8px;border:1px solid transparent;margin-bottom:8px;cursor:pointer;user-select:none}
-  label.option:hover{background:#fbf8ff}
-  label.option input{margin-right:10px}
-  .tracker{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,0.04);height:calc(100vh - 160px);position:sticky;top:96px;border:1px solid #f0f0f3;overflow:auto}
-  .tracker h4{margin:6px 0 10px;color:var(--muted);text-align:center;font-size:14px}
-  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-  .num{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#e6e7eb;font-weight:700;cursor:pointer;user-select:none}
-  .num.attempted{background:#10b981;color:#fff}
-  .num.active{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(123,92,255,0.12)}
-  .result{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,0.06);margin-top:20px;border:1px solid #f0f0f3;display:none;animation:fadeIn 0.4s ease-in-out}
-  .fixed-summary{position:sticky;top:70px;background:var(--card);border-radius:10px;padding:10px 14px;box-shadow:0 6px 18px rgba(15,23,42,0.05);z-index:30;margin-bottom:10px}
-  .scroll-key{max-height:70vh;overflow-y:auto;padding-right:8px}
-  .review-card{background:var(--card);padding:14px;border-radius:10px;margin-bottom:12px;border:1px solid #e6e6ef}
-  .opt-correct{background:#ecfdf5;border:1px solid #10b981;color:#065f46;padding:10px;border-radius:8px;margin-bottom:8px}
-  .opt-wrong{background:#fff5f5;border:1px solid #ef4444;color:#991b1b;padding:10px;border-radius:8px;margin-bottom:8px}
-  .user-selected{box-shadow:0 0 0 3px rgba(99,102,241,0.12)}
-  .controls{display:flex;gap:8px;justify-content:center;margin-top:12px}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-  @media(max-width:980px){.wrap{grid-template-columns:1fr}.tracker{position:static;height:auto;margin-top:12px}}
-  small.hint{display:block;color:var(--muted);margin-top:6px}
-  .pdf-btn{background:#0f172a;color:#fff;padding:8px 12px;border-radius:8px}
+:root{
+  --bg:#f5f7fb;--card:#ffffff;--text:#0f172a;--muted:#6b7280;
+  --accent:#2563eb;--green:#10b981;--red:#ef4444;--grey:#9ca3af;--yellow:#f59e0b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);}
+header{position:sticky;top:0;background:var(--card);padding:10px 18px;
+  box-shadow:0 2px 6px rgba(0,0,0,.06);z-index:40;display:flex;justify-content:space-between;align-items:center}
+h1{font-size:17px;margin:0;font-weight:600}
+.timer{font-weight:700;color:#b91c1c;margin-left:12px}
+.container{max-width:1100px;margin:14px auto;padding:0 12px}
+#start-screen{background:var(--card);padding:24px;border-radius:10px;
+  box-shadow:0 6px 24px rgba(0,0,0,.06);text-align:center}
+#name{width:70%;padding:10px;font-size:14px;border:1px solid #e5e7eb;border-radius:6px;margin:10px 0}
+button{cursor:pointer;border:none;border-radius:6px;font-weight:600}
+.btn{background:var(--accent);color:#fff;padding:9px 14px}
+.layout{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:16px}
+.tracker{background:var(--card);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.05);
+  padding:10px;height:82vh;overflow:auto;position:sticky;top:76px}
+.tracker h3{text-align:center;margin:0 0 8px;font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.dot{height:34px;border-radius:8px;background:var(--grey);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;cursor:pointer}
+.dot.attempted{background:var(--green)!important}
+.dot.review{background:var(--yellow)!important}
+.main{max-height:82vh;overflow:auto;padding-bottom:120px}
+.qcard{background:var(--card);margin-bottom:12px;border-radius:8px;padding:10px 12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.02)}
+.qtext{font-size:14px;line-height:1.45;margin-bottom:8px;font-weight:400}
+label.option{display:block;font-size:13px;padding-left:16px;margin-bottom:6px;cursor:pointer}
+label.option input{margin-right:8px;vertical-align:middle}
+.bottom-fixed{position:fixed;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:10px;z-index:50}
+.nav-btn{background:#eef2ff;color:#1e40af;padding:10px 14px;border-radius:8px;border:1px solid rgba(30,64,175,0.08)}
+.submit-btn{background:var(--red);color:#fff;padding:10px 14px;border-radius:8px}
+.result-view{display:none;margin-top:12px}
+.summary-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.summary-box{background:var(--card);padding:10px 12px;border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);min-width:140px;text-align:center}
+.summary-title{font-size:12px;color:var(--muted);margin-bottom:6px}
+.summary-val{font-weight:700;font-size:16px}
+.chart-area{background:var(--card);padding:12px;border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px}
+.result-list{margin-top:12px}
+.result-question{background:var(--card);border-radius:8px;padding:10px;margin-bottom:10px;
+  box-shadow:0 1px 3px rgba(0,0,0,.02)}
+.opt-correct{background:#ecfdf5;border-left:4px solid var(--green);border-radius:6px;padding:8px;margin:6px 0}
+.opt-wrong{background:#fff5f5;border-left:4px solid var(--red);border-radius:6px;padding:8px;margin:6px 0}
+.meta-small{font-size:12px;color:var(--muted);margin-top:6px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.tracker{display:none}.main{max-height:none;padding-bottom:160px}}
 </style>
 </head>
 <body>
 <header>
-  <h1>Prelims Precise – History & Polity 2025</h1>
-  <div class="timer">Time Left: <span id="timer">120:00</span></div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <h1>Prelims Mock – History & Polity 2025</h1>
+    <div class="timer" id="headerTimer">120:00</div>
+  </div>
+  <div style="font-size:13px;color:var(--muted)"><span id="nameHeader"></span></div>
 </header>
 
-<div class="wrap">
-  <main class="main">
-    <div id="start-card" class="card">
-      <div style="color:#111827;margin-bottom:8px">Enter your full name to begin</div>
-      <input id="name" type="text" placeholder="Your full name" autocomplete="off"/><br>
-      <div class="controls" style="justify-content:center;margin-top:8px">
-        <button id="startButton" class="btn">Start Quiz</button>
+<div class="container">
+  <div id="start-screen">
+    <h2>Welcome</h2>
+    <p style="color:#555;font-size:13px">Enter your name and begin. 100 Questions • 2 Hours • +2 / -0.66 / 0</p>
+    <input type="text" id="name" placeholder="Your full name"/>
+    <br><button class="btn" id="startBtn">Start Quiz</button>
+  </div>
+
+  <div id="quizLayout" class="layout" style="display:none">
+    <aside class="tracker" id="tracker">
+      <h3>Progress</h3><div class="grid" id="trackerGrid"></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--muted);text-align:center">
+        Grey: Not attempted · Green: Attempted · Yellow: Review
       </div>
-      <div style="color:#666;font-size:13px;margin-top:10px">100 Qs • 2 hours • +2 / −0.66 / 0 • Randomised each load</div>
-      <small class="hint">Questions drawn from Spectrum (Early Modern India), M. Laxmikanth (Union & Territory, Features, FR), and Jan Precise 2025.</small>
+    </aside>
+
+    <main class="main" id="mainArea">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:13px;color:var(--muted)">Candidate: <strong id="candName"></strong></div>
+        <div style="font-size:13px;color:var(--muted)">Questions: 100</div>
+      </div>
+      <div id="questionsContainer"></div>
+      <div style="height:60px"></div>
+    </main>
+  </div>
+
+  <section id="resultsPage" class="result-view">
+    <div class="summary-row">
+      <div class="summary-box"><div class="summary-title">Candidate</div><div class="summary-val" id="resName">-</div></div>
+      <div class="summary-box"><div class="summary-title">Total Score</div><div class="summary-val" id="resScore">0.00</div></div>
+      <div class="summary-box"><div class="summary-title">Correct</div><div class="summary-val" id="resCorrect">0</div></div>
+      <div class="summary-box"><div class="summary-title">Wrong</div><div class="summary-val" id="resWrong">0</div></div>
+      <div class="summary-box"><div class="summary-title">Unattempted</div><div class="summary-val" id="resUn">0</div></div>
+      <div class="summary-box"><div class="summary-title">Attempted</div><div class="summary-val" id="resAttempted">0</div></div>
     </div>
 
-    <div id="quiz-section" style="display:none">
-      <div id="questions-root"></div>
-      <div style="text-align:center;margin-top:12px" class="controls">
-        <button id="submitButton" class="btn">Submit Quiz</button>
+    <div class="chart-area" style="margin-bottom:12px">
+      <canvas id="resultChart" width="220" height="120"></canvas>
+      <div style="font-size:13px;color:var(--muted)">
+        Pie chart:<br><span style="color:var(--green)">● Correct</span>  
+        <span style="color:var(--red)">● Wrong</span>  
+        <span style="color:var(--grey)">● Unattempted</span>
       </div>
     </div>
 
-    <div id="result" class="result"></div>
-  </main>
-
-  <aside class="tracker" id="tracker">
-    <h4>Navigator</h4>
-    <div class="grid" id="tracker-grid"></div>
-    <div style="text-align:center;margin-top:8px">
-      <button id="btn-top" class="ghost">Top</button>
-    </div>
-  </aside>
+    <div id="resultList" class="result-list"></div>
+  </section>
 </div>
 
-<!-- jsPDF CDN for PDF generation -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<div class="bottom-fixed" id="bottomNav" style="display:none">
+  <button class="nav-btn" id="markReviewBtn">Mark for Review (visible)</button>
+  <button class="submit-btn" id="submitBtn">Submit Quiz</button>
+</div>
 
 <script>
-/* ============================
-   100 UPSC-style questions
-   Q1–Q50: Early Modern India (Advent of Europeans + 1757–1857)
-   Q51–Q100: Indian Polity (Union & Territory, Features, Fundamental Rights)
-   Continuous numbering; randomized order on each load
-   ============================ */
-
+/* ----------  QUESTIONS (start) ---------- */
 const QUESTIONS = [
-/* 1 */ {"q":"Consider the following statements about the Charter Acts passed by the British Parliament: 1. The Charter Act of 1813 ended the East India Company's monopoly in trade except for tea and China trade. 2. The Charter Act of 1833 centralized legislative powers in the Governor-General of India. 3. The Charter Act of 1793 introduced the commercial monopoly of the Company. Which are correct?","options":["1 and 2 only","1 only","2 and 3 only","All three"],"answer":0},
-/* 2 */ {"q":"With reference to the Battle of Plassey (1757), consider: 1. It marked the beginning of British political control in Bengal. 2. Siraj-ud-Daulah was deposed after the battle. 3. Robert Clive's victory immediately established direct British rule over all of India. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 3 */ {"q":"Consider the following statements about the system of Subsidiary Alliance introduced by Lord Wellesley: 1. It required Indian rulers to accept a British resident at their court. 2. It prohibited Indian rulers from forming alliances with other powers. 3. It guaranteed autonomy of foreign policy to the Indian princely states. Which are correct?","options":["1 and 2 only","1 only","2 and 3 only","All three"],"answer":0},
-/* 4 */ {"q":"Regarding the Doctrine of Lapse (Dalhousie): 1. It allowed the East India Company to annex states where the ruler died without a natural heir. 2. It respected adopted heirs' succession rights uniformly. 3. It was a policy that contributed to discontent leading up to 1857. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 5 */ {"q":"Consider statements about Robert Clive’s revenue settlement in Bengal: 1. The Permanent Settlement fixed land revenue permanently on zamindars. 2. It was introduced as a direct policy by Lord Cornwallis. 3. It led to the emergence of absentee landlordism. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 6 */ {"q":"Consider the following about the Anglo-Mysore Wars: 1. Tipu Sultan allied with the French against the British. 2. The Fourth Anglo-Mysore War ended with the defeat of Tipu Sultan at Seringapatam (1799). 3. The wars resulted in expansion of British influence in South India. Which are correct?","options":["1 and 2 only","2 only","1 only","All three"],"answer":0},
-/* 7 */ {"q":"Which of the following were consequences of the British Commercial Policies in the late 18th and early 19th centuries? 1. Deindustrialization of certain Indian handicraft sectors. 2. Rise in exports of raw materials from India. 3. Immediate and uniform improvement in rural incomes. Which are correct?","options":["1 and 2 only","2 and 3 only","3 only","All three"],"answer":0},
-/* 8 */ {"q":"Consider the role of the Dutch and Portuguese in early colonial India: 1. Portuguese established earliest European settlements at Goa and Diu. 2. Dutch focused mainly on spice trade and held settlements in Coromandel and Malabar coasts. 3. Both DDutch and Portuguese introduced plantation monoculture in Bengal in the 17th century. Which are correct?","options":["1 and 2 only","2 and 3 only","1 and 3 only","All three"],"answer":0},
-/* 9 */ {"q":"About the Permanent Settlement (1793): 1. It made zamindars the proprietors of land. 2. It fixed land revenue permanently between government and zamindars. 3. It uniformly benefited peasants by reducing rents. Which are correct?","options":["1 and 2 only","2 and 3 only","3 only","All three"],"answer":0},
-/* 10 */ {"q":"Consider statements about the Regulating Act 1773: 1. It established the office of Governor-General of Bengal. 2. It introduced dual control under the Company and the Crown. 3. It created the Supreme Court at Calcutta. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 11 */ {"q":"With regard to the Wellesley’s tenure as Governor-General: 1. He aggressively pursued the policy of Subsidiary Alliances. 2. He supported revival of Indian arts by state patronage. 3. He opposed expansion of British political power. Which are correct?","options":["1 only","1 and 2 only","2 and 3 only","All three"],"answer":0},
-/* 12 */ {"q":"Consider the following statements about Lord Bentinck’s reforms: 1. He passed the Sati Regulation banning sati in 1829. 2. He introduced English education as an official policy after Macaulay. 3. He ended the practice of human sacrifice in remote regions single-handedly. Which are correct?","options":["1 only","1 and 2 only","2 and 3 only","All three"],"answer":0},
-/* 13 */ {"q":"Regarding the Charter Act of 1833: 1. It declared that the Governor-General of Bengal would be Governor-General of India. 2. It ended the company's commercial activities altogether. 3. It made provision for codification of laws for India. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 14 */ {"q":"Consider the following about the Anglo-Maratha Wars: 1. The Third Anglo-Maratha War (1817–1818) effectively ended Maratha power. 2. The Peshwa was defeated and pensioned by the British after the Third War. 3. The wars led to major territorial gains for the British in central India. Which are correct?","options":["1 and 2 only","2 and 3 only","1 only","All three"],"answer":0},
-/* 15 */ {"q":"With reference to Dalhousie’s tenure (1848–1856): 1. He is credited with the introduction of the Doctrine of Lapse. 2. He initiated the construction of Indian railway network and telegraph lines. 3. He opposed administrative centralization. Which are correct?","options":["1 and 2 only","2 only","1 only","All three"],"answer":0},
-/* 16 */ {"q":"Consider the following statements about the impact of British land revenue systems: 1. Ryotwari system recognized cultivators as proprietors in certain regions. 2. Mahalwari system involved collective responsibility of village communities. 3. All systems uniformly protected cultivators from revenue exploitation. Which are correct?","options":["1 and 2 only","3 only","1 and 3 only","All three"],"answer":0},
-/* 17 */ {"q":"About the impact of European trading companies on Indian ports: 1. They encouraged growth of modern ports like Bombay, Calcutta and Madras. 2. Ports became nodes for trade, shipbuilding and financial services. 3. They uniformly developed local artisanal industries. Which are correct?","options":["1 and 2 only","2 and 3 only","1 and 3 only","All three"],"answer":0},
-/* 18 */ {"q":"Consider the following statements about Missionary activities and social reform in 19th century India: 1. Missionaries contributed to spread of modern education and printing. 2. Presence of missionaries was an unimportant factor in social reform debates. 3. Christian missionary criticism influenced debates on practices like sati. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 19 */ {"q":"With reference to the 18th-century Indian economy: 1. Deindustrialization affected some artisan sectors due to cheap machine-made imports. 2. Agricultural commercialization increased the production of exportable raw materials. 3. The Company policy uniformly led to immediate rural prosperity. Which are correct?","options":["1 and 2 only","2 and 3 only","3 only","All three"],"answer":0},
-/* 20 */ {"q":"Consider the role of Indian rulers under subsidiary alliance: 1. They lost control over foreign policy. 2. They retained full autonomous control over military. 3. They often had to cede territory or pay for troops. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 21 */ {"q":"Regarding the early European forts and settlements: 1. Portuguese established Goa while Dutch had important settlements in Malabar and Coromandel. 2. French established a presence in Puducherry. 3. English initially had a settlement at Bombay through a royal grant. Which are correct?","options":["1 and 2 only","1 and 3 only","2 and 3 only","All three"],"answer":3},
-/* 22 */ {"q":"Consider the following about the Battle of Wandiwash (1760): 1. It was fought between British and the French in South India. 2. The British victory established their naval dominance in the Coromandel. 3. The battle directly resulted in British annexation of French territories in Europe. Which are correct?","options":["1 and 2 only","2 and 3 only","1 only","All three"],"answer":0},
-/* 23 */ {"q":"With reference to revenue collection and intermediaries: 1. Zamindari system created landlords who often extracted rent from peasants. 2. Ryots were recognized as proprietors under the Ryotwari system. 3. Mahalwari settlements involved village communities in revenue responsibility. Which are correct?","options":["1 and 3 only","2 only","1 and 2 only","All three"],"answer":3},
-/* 24 */ {"q":"Consider statements about the Indian textile industry under early British policies: 1. Textile exports increased, but Indian weaving faced competition from British mills. 2. Manchester industrial output had no impact on Indian handloom sectors. 3. Indian cities like Dhaka suffered decline in certain segments. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 25 */ {"q":"About the role of factory acts and labour laws in early 19th century India: 1. There were effective pan-Indian factory acts in early 1800s. 2. Labour regulation gained momentum in late 19th and early 20th centuries. 3. Early colonial rule paid limited attention to worker welfare. Which are correct?","options":["2 and 3 only","1 only","1 and 2 only","All three"],"answer":0},
-/* 26 */ {"q":"Consider the contributions of Warren Hastings: 1. He implemented judicial reforms including the establishment of a criminal code. 2. He introduced the system of collection of revenue under Permanent Settlement. 3. His administration ended corruption entirely. Which are correct?","options":["1 only","1 and 2 only","2 and 3 only","All three"],"answer":0},
-/* 27 */ {"q":"With reference to Sufi and Bhakti movements’ decline during the 18th-19th centuries: 1. Their patronage declined with changes in polity. 2. They were completely extinct by 1800. 3. They continued in varied social forms despite colonial changes. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 28 */ {"q":"Consider the following about the English education policy in 1835 (Macaulay’s Minutes): 1. It advocated instruction in English to create a class of intermediaries. 2. It supported promotion of vernaculars as primary medium of higher education. 3. It influenced later institutionalization of English education by the Company. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 29 */ {"q":"Regarding the early modern judicial-administrative developments: 1. The Regulating Act created the Supreme Court at Calcutta. 2. The Cornwallis Code sought to create separation of powers and administrative clarity. 3. Early judicial institutions in India were entirely independent from Company influence. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 30 */ {"q":"Consider the social-religious reform movements in the early 19th century: 1. Raja Ram Mohan Roy campaigned against Sati and for social reforms. 2. The Brahmo Samaj was linked to modernist religious debates. 3. These movements were uniformly opposed by all sections of Indian society. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 31 */ {"q":"Which of the following describe the commercial transformations under British rule till 1857? 1. Integration of Indian economy into world markets. 2. Shift towards export of raw materials. 3. Uniform industrial growth across India. Which are correct?","options":["1 and 2 only","2 and 3 only","3 only","All three"],"answer":0},
-/* 32 */ {"q":"Consider the role of princely states after the Anglo-Maratha wars: 1. Many rulers lost independent foreign policy and became subsidiary allies. 2. Princely states uniformly retained full autonomy and expanded territories. 3. British paramountcy emerged as a defining feature. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 33 */ {"q":"With reference to early railways and communication: 1. Railways were first introduced in the 1850s primarily for commercial and strategic reasons. 2. Telegraph expansion in mid-19th century improved administrative control. 3. Railways caused no long-term economic or social impacts in India. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 34 */ {"q":"Consider the following about the role of Indian sepoys and early military recruitment: 1. The British recruited heavily from so-called 'martial races'. 2. European military reforms reshaped Indian units and command structures. 3. Sepoy regiments enjoyed identical pay and conditions as European regiments. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 35 */ {"q":"Regarding the Treaty of Bassein (1802): 1. It was signed between the Peshwa and the British. 2. It led to accelerated British involvement in Maratha politics. 3. It resulted in complete annexation of the Maratha territories immediately. Which are correct?","options":["1 and 2 only","2 and 3 only","1 only","All three"],"answer":0},
-/* 36 */ {"q":"Consider the administrative reforms by Lord Cornwallis: 1. He sought to separate revenue and judiciary functions. 2. The Cornwallis Code included reorganization of civil services. 3. His reforms abolished zamindari tenures altogether. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 37 */ {"q":"About the Eastern and Western commercial routes: 1. European trading companies developed maritime routes linking India to Europe and East Asia. 2. Inland waterways and riverine trade lost all importance under Company rule. 3. Port towns evolved as commercial centres under colonial influence. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 38 */ {"q":"Consider the economic critique of colonialism: 1. Some historians argue colonial policies deindustrialized India. 2. Others claim colonial rule brought modernization and infrastructure benefits. 3. All scholars uniformly agree on a single interpretation. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 39 */ {"q":"With reference to the role of the Dutch East India Company (VOC) in India: 1. The VOC established trading posts along the Coromandel coast. 2. VOC activities were limited solely to Europe and did not affect Indian trade. 3. VOC rivalries with other Europeans influenced local politics. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 40 */ {"q":"Consider the role of European missionaries in the 19th century: 1. They introduced printing and western education. 2. They were uniformly welcomed by all sections of Indian society. 3. Missionary presence contributed to social debates on practices like sati and caste. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 41 */ {"q":"Regarding agrarian distress in Bengal and other regions under Company rule: 1. Heavy revenue demands sometimes caused famines and distress. 2. Permanent Settlement eliminated all agrarian distress. 3. Company policies sometimes prioritized revenue over welfare. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 42 */ {"q":"Consider the administrative role of Governors-General: 1. They evolved from Bengal-specific authority to all-India responsibility. 2. The office of Governor-General was created by the Charter Act of 1833. 3. The Governor-General had no legislative powers. Which are correct?","options":["1 and 2 only","2 and 3 only","3 only","All three"],"answer":0},
-/* 43 */ {"q":"With reference to maritime trade in the 18th century: 1. European trading companies disrupted old Indian ocean trade networks. 2. New shipping practices integrated Indian trade into global markets. 3. Local shipping and coastal trade completely disappeared. Which are correct?","options":["1 and 2 only","2 and 3 only","3 only","All three"],"answer":0},
-/* 44 */ {"q":"Consider the following about the role of East India Company's private armies: 1. They allowed the Company to project power locally. 2. They were entirely separate from company civil administration. 3. Their maintenance was a financial burden on India's revenue. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 45 */ {"q":"Regarding early modern cultural changes: 1. Urbanization and port growth fostered new social groups. 2. Colonial rule had no influence on language and print culture. 3. New public spheres emerged through newspapers and journals. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 46 */ {"q":"Consider the following about Indian responses to European expansion (18th century): 1. Indian states sometimes allied with Europeans for strategic reasons. 2. Uniform nationalist resistance existed prior to 1857. 3. Diplomatic negotiation and adaptation were common responses. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 47 */ {"q":"With reference to early modern law reforms: 1. The Company attempted some codification of laws for its territories. 2. Traditional legal fora immediately disappeared after Company rule. 3. Law reforms were part of a broader administrative rationalization. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 48 */ {"q":"Consider the following about the Company’s monopoly over trade: 1. It ended gradually through the Charter Acts of early 19th century. 2. The monopoly persisted unchanged till Indian independence. 3. Easing of monopoly led to more private European merchants in India. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 49 */ {"q":"Regarding changes in revenue administration in Madras Presidency: 1. Ryotwari system recognized individual cultivators in parts of Madras. 2. The Ryotwari system eliminated all exploitation. 3. The system shifted revenue responsibility to the cultivator. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 50 */ {"q":"Consider the following about the growth of Indian political consciousness pre-1857: 1. Early associations and press fostered debate among educated Indians. 2. Mass pan-Indian political organizations were ubiquitous before 1857. 3. Socio-religious reform and print culture contributed to emerging public sphere. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
+  {"q":"Consider the following statements about Article 1 of the Constitution of India: 1. It declares India, that is Bharat, to be a Union of States. 2. The term ‘Union’ implies that States have the right to secede from the Union. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither 1 nor 2"],"answer":0},
+  {"q":"Which one of the following best describes the concept of 'quasi-federalism' as applied to India?","opts":["A federation where constituent units are fully sovereign","A federal polity with a strong Centre and single Constitution","A unitary state with no powers to states","A confederation of sovereign states"],"answer":1},
+  {"q":"Consider the following statements regarding Fundamental Rights in India: 1. They are enforceable by the courts. 2. They form part of the basic structure of the Constitution. 3. They can be suspended during a proclaimed national emergency. How many of the statements given above are correct?","opts":["Only one","Only two","All three","None"],"answer":1},
+  {"q":"Which of the following is/are included in the Right to Freedom under Article 19 of the Constitution? 1. Freedom of speech and expression 2. Freedom to assemble peacefully 3. Freedom to form associations or unions. Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1 and 3 only","1, 2 and 3"],"answer":3},
+  {"q":"Which Article of the Constitution specifically provides for the Right to Constitutional Remedies?","opts":["Article 32","Article 21","Article 14","Article 19"],"answer":0},
+  {"q":"Consider the following statements about the Basic Structure doctrine: 1. It was propounded by the Supreme Court in Kesavananda Bharati case. 2. It imposes an implied limitation on Parliament’s power to amend the Constitution. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"With reference to the distribution of legislative powers, which of the following matters is normally under the Union List?","opts":["Police","Public order","Defence","Agriculture"],"answer":2},
+  {"q":"Which of the following statements about Fundamental Duties is/are correct? 1. They were added to the Constitution by the 42nd Amendment. 2. They are justiciable in nature. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither 1 nor 2"],"answer":0},
+  {"q":"Consider the following statements regarding Article 370 (as originally enacted): 1. It provided special autonomy to the State of Jammu and Kashmir. 2. It permitted the State to have its own Constitution. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following writs is correctly matched with its purpose? 1. Habeas Corpus — To secure release of a person wrongfully detained 2. Mandamus — To command a public authority to perform its duty 3. Certiorari — To quash an order passed by an inferior court. Which of the statements given above are correct?","opts":["1 and 2 only","2 and 3 only","1 and 3 only","1, 2 and 3"],"answer":3},
+  {"q":"Which of the following statements about the doctrine of 'separation of powers' is/are correct? 1. It mandates a rigid separation of functions among the legislature, executive and judiciary. 2. The Indian Constitution incorporates the doctrine in a flexible manner. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":1},
+  {"q":"Which one of the following best describes the term ‘residuary powers’ under the Indian Constitution?","opts":["Powers vested in the State governments by default","Powers not enumerated in the Union, State or Concurrent lists and vested in the Union Parliament","Powers shared equally by Centre and States","Powers reserved for local bodies"],"answer":1},
+  {"q":"Consider the following statements regarding Article 356 (President's Rule): 1. It enables the President to assume the functions of a State government. 2. It can be imposed only after the Supreme Court certifies breakdown of constitutional machinery. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following best explains the term 'parliamentary government' as adopted in India?","opts":["The Prime Minister is elected directly by the people","The Council of Ministers is collectively responsible to the legislature","The President is the executive head and controls day-to-day administration","The judiciary supervises executive actions directly"],"answer":1},
+  {"q":"Consider the following statements about the Union Territories: 1. Parliament can make laws for them under Entry 1 of List I. 2. The President may appoint Administrators for Union Territories. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following is/are feature(s) of the Indian Constitution? 1. Written constitution 2. Parliamentary system 3. Single citizenship. Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1 and 3 only","1, 2 and 3"],"answer":3},
+  {"q":"Which of the following statements about Article 368 is/are correct? 1. It prescribes the procedure for amendment of the Constitution. 2. All constitutional amendments require ratification by the Legislatures of all States. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Consider the following statements regarding the Directive Principles of State Policy: 1. They are enforceable by courts. 2. They are fundamental in the governance of the country. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":1},
+  {"q":"Which one of the following best describes the 'basic structure' of the Constitution as interpreted by Indian judiciary?","opts":["A set of unamendable provisions explicitly listed in the Constitution","A judicially evolved doctrine protecting essential features like democracy, secularism and rule of law","The Preamble only","The power of Parliament to amend any provision"],"answer":1},
+  {"q":"Consider the following statements about Fundamental Rights and Directive Principles: 1. Fundamental Rights are justiciable while Directive Principles are non-justiciable. 2. Directive Principles can override Fundamental Rights. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following correctly describes Article 14 of the Constitution?","opts":["Right to Equality before law and equal protection of laws","Right to freedom of speech","Right to constitutional remedies","Right against exploitation"],"answer":0},
+  {"q":"Consider the following about relationship between Union law and State law: 1. Union law prevails over State law on subjects in the Concurrent List in case of conflict. 2. Residuary powers rest with the State governments. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following statements about Fundamental Rights during a national emergency is/are correct? 1. Right to move the Supreme Court under Article 32 can be suspended. 2. Right to life and personal liberty under Article 21 can be suspended. Choose the correct answer.","opts":["1 only","1 and 2 only","2 only","Neither"],"answer":0},
+  {"q":"Which of the following are included in the Fundamental Rights under Part III? 1. Right to Equality 2. Right to Freedom 3. Right to Property (originally). Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1 and 3 only","1, 2 and 3"],"answer":2},
+  {"q":"Consider the following statements regarding the power of judicial review in India: 1. It ensures supremacy of the Constitution. 2. It allows courts to strike down legislative or executive actions that violate the Constitution. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following best explains the term 'single citizenship' in the Indian context?","opts":["A citizen is subject to both Union and State citizenships","There is only one class of citizenship for the whole country","Each state grants its own citizenship besides Union citizenship","Citizenship is determined by domicile only"],"answer":1},
+  {"q":"Consider the following statements about amendments to the Constitution: 1. Parliament can amend any part of the Constitution subject to the procedure in Article 368. 2. No amendment can destroy the basic structure of the Constitution. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following best describes the doctrine of 'pith and substance' as applied in Indian constitutional law?","opts":["A test to determine the true nature of legislation for legislative competence","A doctrine related to economic policy","A principle of criminal law","A tax classification method"],"answer":0},
+  {"q":"Consider the following statements regarding the Local Self Government in India: 1. It is a part of the Union List. 2. The 73rd and 74th Amendments gave constitutional status to Panchayats and Municipalities. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":1},
+  {"q":"Which of the following is/are correct regarding the Right to Equality (Articles 14–18)? 1. Abolition of titles is one of its consequences. 2. State cannot make laws providing reservation in favour of backward classes. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following powers can the President of India exercise in relation to a Union Territory?","opts":["Legislative powers for Union Territories are exercised by Parliament under Entry 1 of List I","President appoints Administrators for Union Territories","President can make regulations for certain Union Territories under Article 240","All of the above"],"answer":3},
+  {"q":"Consider the following statements about the Fundamental Duties: 1. They were added by the 42nd Amendment. 2. They are enforceable by courts. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following is/are correct regarding the distribution of powers in the Seventh Schedule? 1. Union List contains subjects of national importance. 2. State List contains subjects of local importance. 3. Concurrent List includes subjects where both Union and State can legislate. Which of the statements given above are correct?","opts":["1 and 2 only","1 only","1, 2 and 3","2 and 3 only"],"answer":2},
+  {"q":"Which of the following best describes the remedy of 'habeas corpus' available under Indian law?","opts":["A writ to enforce social welfare measures","A writ to secure release of a person wrongfully detained","A writ to transfer a case from one court to another","A writ to quash administrative action"],"answer":1},
+  {"q":"Consider the following statements about the Preamble to the Constitution: 1. It declares India to be a sovereign, socialist, secular, democratic republic. 2. It is not a part of the Constitution. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following is/are features of the Indian constitutional structure? 1. Parliamentary form of government 2. Independent judiciary 3. Federalism with a strong Centre. Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1 and 3 only","1, 2 and 3"],"answer":3},
+  {"q":"Which of the following is associated with the concept of 'residuary powers' under the Indian Constitution?","opts":["They rest with State Legislatures","They rest with the Union Parliament","They are shared equally","They are vested in the President"],"answer":1},
+  {"q":"Which Article provides for equality before law and equal protection of the laws within the territory of India?","opts":["Article 12","Article 14","Article 16","Article 21"],"answer":1},
+  {"q":"Which of the following is/are true about the Right to Property in India? 1. It was originally a Fundamental Right. 2. It was later converted into a legal right under Article 300-A. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following writs can be issued by the High Courts under Article 226? 1. Habeas Corpus 2. Mandamus 3. Quo Warranto 4. Prohibition. Which of the above can be issued?","opts":["1 and 2 only","1, 2 and 3 only","1,2,3 and 4","2 and 3 only"],"answer":2},
+  {"q":"Which one of the following best describes the function of the Constitution's Directive Principles?","opts":["They are enforceable by courts","They are guidelines for the State in policy-making to establish social and economic democracy","They are justiciable rights of citizens","They override Fundamental Rights"],"answer":1},
+  {"q":"Consider the following statements regarding judicial review in India: 1. It is exercised by the Supreme Court and High Courts. 2. It includes review of constitutional amendments. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following best describes 'parliamentary sovereignty' in the Indian context?","opts":["Parliament can amend any provision of the Constitution beyond judicial scrutiny","Parliament can amend the Constitution subject to the basic structure limitation","Parliament has no power to amend the Constitution","Parliament's laws cannot be reviewed by courts"],"answer":1},
+  {"q":"Which Article of the Constitution declares India as a 'Union of States'?","opts":["Article 1","Article 2","Article 3","Article 4"],"answer":0},
+  {"q":"Consider the following statements about the impeachment of the President of India: 1. It can be initiated in either House of Parliament. 2. A two-thirds majority of members present and voting in each House is required for impeachment. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following statements is correct about 'single citizenship' in India?","opts":["A citizen enjoys only Union citizenship","A citizen is simultaneously a citizen of Union and State","All Indian citizens are citizens of India alone","Citizenship law is different for each state"],"answer":2},
+  {"q":"Consider the following statements about the power of the Election Commission of India: 1. It supervises elections to Parliament and State Legislatures. 2. It has the power to disqualify a candidate. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following best describes the concept of 'judicial independence'?","opts":["Judges are completely beyond any accountability","Judicial independence ensures security of tenure and decision-making free from external pressures","Judicial independence implies judges can make laws","Judges are appointed by citizens directly"],"answer":1},
+  {"q":"Which of the following does the Preamble to the Constitution proclaim? 1. Justice, social, economic and political 2. Liberty of thought, expression, belief, faith and worship 3. Equality of status and opportunity. Which of the statements given above are correct?","opts":["1 and 2 only","2 and 3 only","1 and 3 only","1, 2 and 3"],"answer":3},
+  {"q":"Which one of the following is a characteristic of the Indian federal structure?","opts":["A complete separation of powers between Centre and States","Single citizenship and strong Centre with residuary powers at Centre","Each state has its own Constitution","States can secede from the Union"],"answer":1},
+  {"q":"Consider the following statements about the Constitution's Amendment Procedure: 1. Some constitutional amendments require ratification by at least half of the State Legislatures. 2. Every amendment requires a referendum. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following are part of the basic structure of the Constitution as evolved by the judiciary? 1. Secularism 2. Democracy 3. Rule of law. Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1, 2 and 3","None of these"],"answer":2},
+  {"q":"Which one of the following is correctly matched? 1. Article 14 — Equality before law 2. Article 21 — Protection of life and personal liberty 3. Article 32 — Right to move the Supreme Court for enforcement of Fundamental Rights. Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1, 2 and 3","1 only"],"answer":2},
+  {"q":"Consider the following statements about the Union Legislature: 1. It consists of the President and two Houses. 2. All Bills must be passed by both Houses to become law (except money bills). Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following correctly describes the scope of judicial review in India?","opts":["It is limited to interpretation of statutes only","It includes review of executive orders, subordinate legislation and sometimes constitutional amendments","It cannot be exercised against the acts of Parliament","It applies only in civil matters"],"answer":1},
+  {"q":"Which of the following best describes the status of Fundamental Rights in the Constitution?","opts":["They are legal rights subject to limitation by law","They are mere moral guidelines","They are Directive Principles of State Policy","They are only applicable to government servants"],"answer":0},
+  {"q":"Which of the following bodies is required to be consulted by the President before promulgating an ordinance?","opts":["The Supreme Court","The Council of Ministers","The Chief Justice of India","The Attorney General"],"answer":1},
+  {"q":"Which of these is not a Fundamental Right under Part III of the Constitution (originally)?","opts":["Right to Equality","Right to Freedom","Right to Property","Right to Life"],"answer":2},
+  {"q":"Which of the following statements is/are correct regarding the office of the Comptroller and Auditor General (CAG)? 1. The CAG audits all expenditure from the Consolidated Fund of India. 2. The CAG is appointed by the President. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Consider the following statements about the protection of minorities under the Constitution: 1. The Constitution guarantees cultural and educational rights to minorities. 2. Article 30 allows minorities to establish and administer educational institutions. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Consider the following statements about the Battle of Plassey (1757): 1. It established the military and political supremacy of the British East India Company in Bengal. 2. It was won solely by British superior firepower. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following was a direct administrative consequence of the Company’s victory in Bengal after Plassey?","opts":["Introduction of Permanent Settlement in 1773","Immediate annexation of Madras Presidency","Abolition of the Mughal Empire","Establishment of provincial assemblies"],"answer":0},
+  {"q":"Consider the following about Lord Wellesley’s policies: 1. He introduced Subsidiary Alliance. 2. He pursued expansion by direct annexation only. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which one of the following best describes the Doctrine of Lapse as applied by Lord Dalhousie?","opts":["A policy of economic liberalisation","Annexation of princely states that lacked a direct male heir","A tax policy for zamindars","A judicial reform"],"answer":1},
+  {"q":"Consider the following statements about the Permanent Settlement: 1. It was introduced by Lord Cornwallis. 2. It fixed the land revenue permanently with zamindars. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following were features of the Ryotwari system? 1. Settlement was made with individual cultivators (ryots). 2. It was implemented in parts of Madras and Bombay Presidencies. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Consider the following statements about Lord Cornwallis’s reforms (Cornwallis Code): 1. They sought to reorganize civil and criminal services. 2. They attempted to check corruption among Company officials. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following best describes the Subsidiary Alliance system?","opts":["A voluntary federation of Indian states","A diplomatic and military arrangement making Indian states dependent on Britain","A trade alliance among European companies","A religious pact"],"answer":1},
+  {"q":"Consider the following statements about Tipu Sultan: 1. He allied with the French against the British. 2. He introduced modern military reforms in Mysore. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following measures is associated with Lord Dalhousie’s administration? 1. Introduction of railways 2. Doctrine of Lapse 3. Educational policies promoting vernaculars. Which of the statements given above are correct?","opts":["1 and 2 only","2 and 3 only","1 and 3 only","All three"],"answer":0},
+  {"q":"Consider the following statements about the Ilbert Bill controversy: 1. It related to the jurisdiction of Indian judges over European British subjects. 2. It led to protests by British residents in India. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following best explains 'Deindustrialisation' under early colonial rule?","opts":["Rapid industrialisation of Indian textile mills","Decline of traditional handicraft industries due to import of machine-made British goods","Government-sponsored industrial growth","A move of artisans to agriculture"],"answer":1},
+  {"q":"Consider the following about the Revolt of Vellore (1806): 1. It was an early military uprising against the East India Company. 2. It was primarily caused by changes in military dress and interference in religion. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following best describes the change in revenue administration under the Permanent Settlement?","opts":["Revenue was collected from peasants directly by Company officials","Revenue demand was fixed permanently with zamindars who became proprietors","Revenue was abolished","Revenue was variable depending on crop yield"],"answer":1},
+  {"q":"Consider the following statements about the Charter Act of 1833: 1. It ended the commercial activities of the East India Company. 2. It made the Governor-General of Bengal the Governor-General of India. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following developments took place during the first half of the 19th century in India? 1. Introduction of railways 2. Anglo-Sikh wars 3. Macaulay's Minute on education. Choose the correct answer.","opts":["1 and 3 only","2 and 3 only","1 and 2 only","All three"],"answer":0},
+  {"q":"Consider the following statements about the Paika Rebellion (1817): 1. It occurred in Odisha. 2. It was a protest against revenue policies of the Company. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following best describes the economic motive behind British expansion in India in the late 18th and early 19th centuries?","opts":["To promote indigenous industries","To secure markets and raw materials for British industry","To create a welfare state","To spread industrial technology"],"answer":1},
+  {"q":"Consider the following statements about the Santhal rebellion (1855–56): 1. It was against British revenue policies and exploitative zamindars. 2. It was led by Sidhu and Kanhu. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following best describes the administrative concept of 'dual government' in Bengal under the early Company rule?","opts":["Coexistence of British and Mughal administrative structures with separate roles in revenue collection and civil administration","A federal setup like modern India","Direct rule by two separate British authorities","Shared sovereignty between Company and Nawab"],"answer":0},
+  {"q":"Consider the following statements regarding social reform movements before 1857: 1. Raja Ram Mohan Roy campaigned against Sati. 2. Dayanand Saraswati founded the Arya Samaj before 1857. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which one of the following acts is associated with making English the official language of higher education in India?","opts":["Charter Act of 1813","Charter Act of 1833","Macaulay's Minute (1835)","Indian Councils Act 1861"],"answer":2},
+  {"q":"Consider the following about the Treaty of Amritsar (1809): 1. It established boundaries between British territories and Sikh dominions. 2. It recognized Ranjit Singh as the sovereign of Lahore. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following was a purpose of railways introduced in India during the mid-19th century?","opts":["To promote regional languages","To facilitate troop movements and administrative control","To decentralize British rule","To discourage trade"],"answer":1},
+  {"q":"Consider the following statements about Lord Bentinck: 1. He is associated with the abolition of Sati. 2. He promulgated policies that encouraged missionary activity without restriction. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which one of the following best explains the Charter Act of 1813?","opts":["It renewed the Company's charter and allowed missionaries to propagate Christianity in British territories in India","It made Lord Wellesley the Governor-General","It introduced the Permanent Settlement","It nationalised railways"],"answer":0},
+  {"q":"Consider the following about the Ilbert Bill controversy: 1. It highlighted racial discrimination within legal jurisdiction. 2. It was successfully implemented without protest. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following measures was used by the East India Company to expand its power in India? 1. Subsidiary Alliance 2. Doctrine of Lapse 3. Use of modern weaponry and discipline. Choose the correct answer.","opts":["1 and 2 only","2 and 3 only","1 and 3 only","All three"],"answer":3},
+  {"q":"Consider the following statements about the Permanent Settlement: 1. It aimed to create a loyal class of landlords. 2. It ensured permanent welfare of peasants. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which one of the following is associated with the Ryotwari settlement?","opts":["Settlement with zamindars","Settlement with individual ryots","Permanent fixation of land revenue in Bengal","Introduction of Mahalwari system"],"answer":1},
+  {"q":"Which of the following was a significant impact of British economic policies in India by mid-19th century?","opts":["Rapid industrialisation of Indian textile sector","Decline of some traditional handicrafts and increased export of raw materials","Complete abolition of land revenue","Universal improvement in peasant welfare"],"answer":1},
+  {"q":"Which of the following statements about the Monetary Policy Committee (MPC) is/are correct? 1. It is chaired by the RBI Governor. 2. It decides the policy repo rate. 3. It includes members appointed by the Central Government. How many of the above statements are correct?","opts":["Only one","Only two","All three","None"],"answer":2},
+  {"q":"Consider the following statements regarding the Production Linked Incentive (PLI) scheme: 1. It aims to boost domestic manufacturing. 2. It offers incentives based on incremental production. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following best describes the term 'geoeconomics' as used in international relations reporting?","opts":["Use of economic instruments to achieve geopolitical objectives","Exclusive use of military power","Cultural diplomacy only","A theory of historical economics"],"answer":0},
+  {"q":"Consider the following statements about digital payments in India: 1. Unified Payments Interface (UPI) facilitates instant fund transfer. 2. UPI transactions are limited to bank working hours. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+  {"q":"Which of the following statements about biodiversity heritage sites is/are correct? 1. They are notified by the State Governments. 2. They seek to conserve areas of rich biodiversity and cultural heritage. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Consider the following statements regarding carbon credits: 1. They are a market-based mechanism to offset emissions. 2. They allow a country to sell emission reductions to others. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which one of the following describes the significance of 'critical minerals' in recent policy discussions?","opts":["They are minerals essential for modern technologies and strategic industries","They are minerals used only in traditional crafts","They are unimportant for economic security","They refer to fossil fuels only"],"answer":0},
+  {"q":"Consider the following statements about the Global Trade Report in January: 1. World trade growth is expected to moderate. 2. Supply chain diversification remains a key trend. Which of the statements given above is/are correct?","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":2},
+  {"q":"Which of the following statements about a recent space policy update is/are correct? 1. It promotes private sector participation in space activities. 2. It restricts foreign participation entirely. Choose the correct answer.","opts":["1 only","2 only","Both 1 and 2","Neither"],"answer":0},
+]; 
+/* ----------  QUESTIONS (end)  ---------- */
+// -----------------------------
+// Application logic
+// -----------------------------
+let state = {
+  name: '',
+  questions: [],
+  answers: [],
+  status: [],
+  timeLeft: 120*60,
+  timer: null
+};
 
-/* ---------- INDIAN POLITY (50) Q51-Q100 ---------- */
-
-/* 51 */ {"q":"Consider the following statements about Union and its Territory under the Constitution: 1. Article 1 declares India as a Union of States. 2. Parliament can create new states or alter boundaries of existing states. 3. States have sovereignty over territories within their borders without any parliamentary power to alter. Which are correct?","options":["1 and 2 only","1 only","2 and 3 only","All three"],"answer":0},
-/* 52 */ {"q":"With reference to Articles 3 and 4 of the Constitution: 1. Parliament may by law form a new state by separation of territory from any state. 2. Any such law requires the President’s prior recommendation only, not the state's view. 3. The law under Article 3 does not require a state legislature's consent but the President must refer the matter to the state legislature for its views. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 53 */ {"q":"Consider the following about the distribution of powers: 1. Entry in State List cannot be legislated by Parliament. 2. Entry 97 of Union List allows Parliament to legislate on any subject for national interest. 3. Residuary powers are vested in Parliament. Which are correct?","options":["3 only","1 and 3 only","2 and 3 only","All three"],"answer":0},
-/* 54 */ {"q":"Regarding the features of the Constitution (basic features doctrine): 1. Federalism is an essential feature. 2. Judicial review is part of the basic structure. 3. Amendment of any part of Constitution, including basic structure, is unchallengeable. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 55 */ {"q":"Consider the following statements about the Union Territories: 1. Some Union Territories have legislatures and elected governments. 2. Union Territories are under the administrative control of the President through an Administrator. 3. Parliament cannot alter the powers of a Union Territory legislature. Which are correct?","options":["1 and 2 only","2 only","3 only","All three"],"answer":0},
-/* 56 */ {"q":"With reference to the Konkani and linguistic states reorganization: 1. States were reorganized primarily on linguistic basis after 1956. 2. States Reorganisation Commission recommended reorganisation based on economic factors alone. 3. Linguistic reorganization respected administrative convenience and unity of country. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 57 */ {"q":"Consider the following statements about Fundamental Rights: 1. Right to Equality is enshrined in Article 14–18. 2. Fundamental Rights are absolute and cannot be restricted by law. 3. Article 19 gives freedoms which can be reasonably restricted in interest of security, morality etc. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 58 */ {"q":"With reference to the Right to Equality: 1. Article 14 prohibits discrimination by State but not private individuals. 2. Article 15 prohibits discrimination only on grounds of religion and race. 3. Article 16 relates to equality of opportunity in public employment. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 59 */ {"q":"Consider the following statements about Article 368 (amendment procedure): 1. Parliament can amend any part of the Constitution by following the procedure in Article 368. 2. The amendment requires President's assent to come into effect. 3. An amendment cannot be challenged in courts under any circumstance. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 60 */ {"q":"About Fundamental Rights and Directive Principles: 1. Directive Principles are non-justiciable guides to policy. 2. Directive Principles have priority over Fundamental Rights in all matters. 3. The Constitution aims to harmonize both. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 61 */ {"q":"Consider the following statements about the Right to Life and Personal Liberty under Article 21: 1. It includes right to privacy as held by the Supreme Court. 2. It can be deprived only by procedure established by law which is fair, just and reasonable. 3. Article 21 is restricted only to physical bodily liberty. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 62 */ {"q":"With reference to Fundamental Rights (FR) restrictions during emergency: 1. During a proclaimed Emergency, Article 19 rights can be suspended. 2. The right to move the Supreme Court under Article 32 cannot be suspended during emergency. 3. Habeas Corpus petitions remain available during Emergency. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 63 */ {"q":"Consider the following statements about the feature of the Constitution as 'Parliamentary form of government': 1. The Council of Ministers is responsible to the Lower House. 2. The President is a ceremonial head and cannot dismiss a ministry on constitutional grounds. 3. Collective responsibility is a key feature. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 64 */ {"q":"Regarding the doctrine of 'basic structure' established by the Supreme Court: 1. It prevents Parliament from destroying the essential features of Constitution. 2. It was propounded in Kesavananda Bharati case. 3. It provides an explicit list of basic features in the Constitution text. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 65 */ {"q":"Consider the following about the Freedom of Speech and Expression under Article 19(1)(a): 1. It includes right to criticize the government. 2. It is absolute and cannot be restricted. 3. It is subject to reasonable restrictions under Clause (2). Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 66 */ {"q":"With reference to the Right to Constitutional Remedies (Article 32): 1. It empowers individuals to approach Supreme Court for enforcement of FRs. 2. Parliament may suspend Article 32 during an emergency. 3. Article 32 is itself a fundamental right. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 67 */ {"q":"Consider statements about the doctrine of 'basic features': 1. Judicial review is an essential feature. 2. The President’s rule under Article 356 is immune from judicial review. 3. Federal character of Constitution is basic part. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 68 */ {"q":"Regarding the scope of Article 19(2) restrictions: 1. Reasonable restrictions include security of state and friendly relations with foreign states. 2. Restrictions must be reasonable and not arbitrary. 3. The list of grounds is exhaustive and cannot be extended by statute. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 69 */ {"q":"Consider the following about citizenship under the Constitution: 1. Citizenship at the commencement of the Constitution was governed by the Citizenship Act, 1955. 2. The Constitution itself provided provisions for citizenship in Article 5–11 initially. 3. Parliament cannot legislate on citizenship. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 70 */ {"q":"With reference to fundamental duties: 1. They are non-justiciable moral obligations under Part IVA. 2. They were added by the 42nd Amendment Act, 1976. 3. They impose legally enforceable obligations in all cases. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 71 */ {"q":"Consider the following statements about Directive Principles of State Policy (DPSP): 1. DPSPs are non-justiciable in nature. 2. They aim to establish social and economic democracy. 3. Courts can enforce DPSPs directly as rights. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 72 */ {"q":"Regarding reservation policies and equality: 1. Article 15 permits state to make special provisions for advancement of socially and educationally backward classes. 2. There cannot be reservation based on economic criteria alone. 3. Reservation for SC/ST cannot exceed 50% as per Supreme Court rulings in all cases. Which are correct?","options":["1 only","1 and 2 only","2 and 3 only","All three"],"answer":0},
-/* 73 */ {"q":"Consider the following statements about the power of judicial review in India: 1. The Supreme Court has power to strike down constitutional amendments violating the basic structure. 2. Judicial review is derived from the text of the Constitution explicitly. 3. High Courts have original jurisdiction under Article 226 for enforcement of rights. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 74 */ {"q":"With reference to the emergency provisions: 1. Emergency under Article 352 is proclaimed by the President on the basis of mere information. 2. Proclamation of Emergency requires parliamentary approval within one month. 3. Certain fundamental rights are automatically suspended during emergency except Article 20 and 21. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 75 */ {"q":"Consider the following about Parliamentary Sovereignty in Indian context: 1. Parliament is sovereign but subject to the Constitution. 2. Parliament has residuary legislative powers. 3. Parliament can amend the Constitution and all its basic features without limitation. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 76 */ {"q":"Regarding freedom of association and assembly: 1. Right to assemble peaceably and without arms is protected under Article 19(1)(b). 2. State may impose reasonable restrictions on this right. 3. This right applies only to citizens alone. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 77 */ {"q":"Consider the following about the trade-off between FR and DPSP: 1. The Apex Court has sometimes read FR in light of DPSP to harmonize both. 2. DPSPs can be used to limit FRs without constitutional basis. 3. The Constitution envisages a balance between the two. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 78 */ {"q":"With reference to Article 14 equality clause: 1. It forbids arbitrary state action and ensures equal treatment. 2. Reasonable classification is permissible under Article 14. 3. Article 14 applies to both state and private individuals equally. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 79 */ {"q":"Consider the following statements about judicial appointments: 1. Supreme Court judges are appointed by the President after consultation with Collegium. 2. The Collegium system is laid down in the Constitution text exactly in that form. 3. Parliamentary approval is required for Supreme Court appointments. Which are correct?","options":["1 only","2 only","1 and 3 only","All three"],"answer":0},
-/* 80 */ {"q":"Regarding the writ jurisdiction: 1. High Courts have power to issue writs under Article 226 for enforcement of rights. 2. Supreme Court’s writ jurisdiction under Article 32 is only for fundamental rights. 3. Parliament can curtail the writ jurisdiction of the Supreme Court. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 81 */ {"q":"Consider the following statements about the federal structure of India: 1. India is a quasi-federal state with a strong Centre. 2. Residuary powers lie with the Centre. 3. The existence of single citizenship is a federal feature. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 82 */ {"q":"With reference to the feature of secularism in the Constitution: 1. The State treats all religions equally in principle. 2. Secularism in India is identical to the strict separation of Church and State as in all Western models. 3. State can make laws regulating religious practices for public order and morality. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 83 */ {"q":"Consider the following about the directive principles and patents: 1. DPSPs include promotion of scientific research and inventions. 2. DPSPs are enforceable as legal rights in courts. 3. DPSPs influence policy on intellectual property indirectly. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 84 */ {"q":"Regarding the Right to Privacy judgment (K.S. Puttaswamy): 1. The Supreme Court held privacy to be a fundamental right under Article 21. 2. The judgment recognized privacy as absolute without restrictions. 3. The case emphasized proportionality and reasonable restrictions for privacy limitations. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 85 */ {"q":"Consider the following about restrictions on fundamental rights for security reasons: 1. Internal security can be ground for restricting FRs under Article 19(2). 2. National emergency automatically removes all civil liberties. 3. Preventive detention provisions have constitutional safeguards. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 86 */ {"q":"With reference to Article 32 and the right to constitutional remedies: 1. Dr. B.R. Ambedkar called Article 32 the heart and soul of the Constitution. 2. Article 32 can be suspended during emergency without limitation. 3. Supreme Court has power to issue writs for enforcement of FRs. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 87 */ {"q":"Consider the following about the feature of republicanism in India: 1. India is a Republic with head of state elected either directly or indirectly. 2. The President acts as head of state but not as a hereditary monarch. 3. Republicanism implies absence of rule by elected body. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 88 */ {"q":"Regarding equality before law versus equal protection of laws: 1. Article 14 embodies both equality before law and equal protection of laws. 2. These concepts are identical in practice. 3. They impose different standards of judicial scrutiny. Which are correct?","options":["1 only","2 only","1 and 3 only","All three"],"answer":0},
-/* 89 */ {"q":"Consider the following about the enforcement of FRs through PIL: 1. Public Interest Litigation expanded access to justice. 2. PIL allowed courts to take suo moto notice in public interest. 3. PIL always led to judicial overreach without benefits. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 90 */ {"q":"With reference to the Constitution’s special provisions for certain states (Article 371 series): 1. They provide special administrative arrangements for states like Nagaland and Mizoram. 2. Such provisions are permanent and cannot be amended. 3. They reflect asymmetric federalism in India. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 91 */ {"q":"Consider the following about the concept of 'separation of powers': 1. Indian Constitution enshrines separation of powers in absolute form. 2. In practice, overlapping functions between legislature, executive and judiciary exist. 3. Separation of powers is part of the basic structure. Which are correct?","options":["2 and 3 only","1 only","1 and 3 only","All three"],"answer":0},
-/* 92 */ {"q":"Regarding Constitutional amendments and federalism: 1. Parliament can amend provisions relating to territories and states by a simple majority or special majority as required. 2. Creation of new states falls under Article 3 requiring simple majority in Parliament. 3. Amendment procedure under Article 368 always requires ratification by state legislatures for all amendments. Which are correct?","options":["1 only","1 and 2 only","2 and 3 only","All three"],"answer":1},
-/* 93 */ {"q":"Consider the following about the process of enforcement of fundamental rights: 1. Any person can move the Supreme Court under Article 32. 2. High Courts can use Article 226 to issue writs for enforcement of rights. 3. Remedies under Article 32 are exclusive and defeat remedies under Article 226. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 94 */ {"q":"With reference to the Basic Structure doctrine and amendments: 1. In Kesavananda Bharati, the court held Parliament cannot destroy basic features. 2. The 42nd Amendment made Parliament omnipotent regarding constitutional amendments. 3. The judiciary has the final say on whether an amendment violates basic structure. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 95 */ {"q":"Consider the following statements about the doctrine of repugnancy: 1. When a state law conflicts with a central law on a subject in concurrent list, central law prevails. 2. Repugnancy rule is absolute and cannot be tested by courts. 3. The residual power to legislate rests with Parliament. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 96 */ {"q":"Regarding the scope of Article 31B and 9th Schedule (historic): 1. Laws placed in Ninth Schedule were initially immune from judicial review. 2. Judicial review over Ninth Schedule laws was later permitted if they violate basic structure. 3. Ninth Schedule currently has no legal significance. Which are correct?","options":["1 and 2 only","2 only","1 only","All three"],"answer":0},
-/* 97 */ {"q":"Consider the following about fundamental rights under Article 32 and role of Supreme Court: 1. Article 32 is a guarantor of fundamental rights and empowers citizens to move SC. 2. The framers intended Article 32 to be a mere advisory provision. 3. Supreme Court’s power under Article 32 is essential for constitutional governance. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/* 98 */ {"q":"With reference to the protection of cultural and educational rights (Articles 29 and 30): 1. Article 29 protects minority cultures and language. 2. Article 30 gives minorities right to establish and administer educational institutions. 3. These rights are absolute and without any regulation. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0},
-/* 99 */ {"q":"Consider the following statements about emergency and fundamental rights: 1. During national emergency, Article 19 rights can be suspended. 2. Article 20 (protection in respect of conviction for offences) can be suspended during national emergency. 3. Article 21 (right to life) cannot be suspended even during emergency. Which are correct?","options":["1 and 3 only","2 only","1 only","All three"],"answer":0},
-/*100*/ {"q":"Regarding the constitutional feature of secularism: 1. The Preamble declares India a secular republic. 2. Secularism requires state neutrality towards all religions. 3. Secularism bars state intervention in any religious matter at all times. Which are correct?","options":["1 and 2 only","3 only","1 only","All three"],"answer":0}
-];
-
-
-// Randomize order on each load
-QUESTIONS.sort(()=>Math.random()-0.5);
-
-/* quiz state */
-let candidateName = '', timeLeft = 120*60, timerInterval = null;
 const $ = id => document.getElementById(id);
 
-/* Render in batches so UI remains responsive */
-function renderQuestionsInBatches(){
-  const root = $('questions-root'); root.innerHTML = '';
-  const batch = 8;
-  let i = 0;
-  function nextBatch(){
-    const end = Math.min(i+batch, QUESTIONS.length);
-    for(let j=i;j<end;j++){
-      const q = QUESTIONS[j];
-      const card = document.createElement('div');
-      card.className = 'question';
-      card.id = 'q'+j;
-      const h = document.createElement('h3');
-      h.innerText = `Q${j+1}. ${q.q}`;
-      card.appendChild(h);
-      q.options.forEach((opt, idx)=>{
-        const lbl = document.createElement('label');
-        lbl.className = 'option';
-        const inp = document.createElement('input');
-        inp.type = 'radio';
-        inp.name = 'q'+j;
-        inp.value = idx;
-        inp.addEventListener('change', ()=> markAttempt(j));
-        lbl.appendChild(inp);
-        lbl.appendChild(document.createTextNode(' ' + opt));
-        card.appendChild(lbl);
-      });
-      root.appendChild(card);
-    }
-    i = end;
-    if(i < QUESTIONS.length) setTimeout(nextBatch, 30);
-    else setTimeout(highlightOnScroll, 200);
-  }
-  nextBatch();
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+$('startBtn').addEventListener('click',()=>{
+  const name=$('name').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  state.name=name;
+  $('nameHeader').textContent=name;
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('quizLayout').style.display='grid';
+  document.getElementById('bottomNav').style.display='flex';
+  startQuiz();
+});
+
+function startQuiz(){
+  state.questions=shuffle(QUESTIONS.slice());
+  state.answers=new Array(state.questions.length).fill(null);
+  state.status=new Array(state.questions.length).fill('not');
+  renderTracker();
+  renderQuestions();
+  startTimer();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* Tracker */
 function renderTracker(){
-  const grid = $('tracker-grid'); grid.innerHTML = '';
-  QUESTIONS.forEach((_,i)=>{
-    const d = document.createElement('div');
-    d.className = 'num'; d.innerText = i+1;
-    d.addEventListener('click', ()=>{ const el = $('q'+i); if(el) el.scrollIntoView({behavior:'smooth', block:'center'}); });
+  const grid=$('trackerGrid'); grid.innerHTML='';
+  for(let i=0;i<state.questions.length;i++){
+    const d=document.createElement('div');
+    d.className='dot'; d.textContent=i+1;
+    d.onclick=()=>document.getElementById('q'+i).scrollIntoView({behavior:'smooth',block:'center'});
     grid.appendChild(d);
+  }
+}
+
+function renderQuestions(){
+  const box=$('questionsContainer'); box.innerHTML='';
+  state.questions.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='qcard'; div.id='q'+i;
+    let html=`<div class="qtext">${i+1}. ${q.q}</div>`;
+    html+=q.opts.map((op,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}" onchange="markAnswer(${i},${j})"> ${String.fromCharCode(65+j)}. ${op}</label>`).join('');
+    div.innerHTML=html; box.appendChild(div);
   });
 }
 
-/* mark attempt */
-function markAttempt(i){
-  const nodes = document.querySelectorAll('#tracker-grid .num');
-  if(nodes[i]) nodes[i].classList.add('attempted');
-}
+window.markAnswer=function(i,j){
+  state.answers[i]=j;
+  state.status[i]='attempted';
+  const dot=document.querySelectorAll('#trackerGrid .dot')[i];
+  if(dot){dot.classList.add('attempted');dot.classList.remove('review');}
+};
 
-/* highlight on scroll */
-function highlightOnScroll(){
-  const qs = document.querySelectorAll('.question'); if(!qs.length) return;
-  const mid = window.innerHeight/2; let active = 0;
-  qs.forEach((el,i)=>{ const r = el.getBoundingClientRect(); if(r.top < mid && r.bottom > 100) active = i; });
-  const nums = document.querySelectorAll('#tracker-grid .num'); nums.forEach(n=>n.classList.remove('active'));
-  if(nums[active]) nums[active].classList.add('active');
-}
+$('markReviewBtn').addEventListener('click',()=>{
+  document.querySelectorAll('.qcard').forEach((el,i)=>{
+    const r=el.getBoundingClientRect();
+    if(r.top>=0 && r.top<window.innerHeight/2 && state.status[i]!=='attempted'){
+      state.status[i]='review';
+      const dot=document.querySelectorAll('#trackerGrid .dot')[i];
+      if(dot) dot.classList.add('review');
+    }
+  });
+  alert('Visible questions marked for review.');
+});
 
-/* Timer */
 function startTimer(){
-  const t = $('timer'); if(timerInterval) clearInterval(timerInterval);
-  timerInterval = setInterval(()=>{
-    const m = Math.floor(timeLeft/60), s = timeLeft%60;
-    if(t) t.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    timeLeft--;
-    if(timeLeft < 0){ clearInterval(timerInterval); submitQuiz(true); alert('Time up — quiz auto-submitted.'); }
+  updateTimer();
+  state.timer=setInterval(()=>{
+    state.timeLeft--;
+    updateTimer();
+    if(state.timeLeft<=0){clearInterval(state.timer);submitQuiz(true);}
   },1000);
 }
 
-/* Submit quiz */
-function submitQuiz(auto=false){
-  if(timerInterval) clearInterval(timerInterval);
-  const selections = [], len = QUESTIONS.length;
-  let score=0, correct=0, wrong=0, unattempted=0;
-  QUESTIONS.forEach((q,i)=>{
-    const sel = document.querySelector(`input[name="q${i}"]:checked`);
-    if(!sel){ selections[i] = null; unattempted++; return; }
-    const v = parseInt(sel.value); selections[i]=v;
-    if(v === q.answer){ score += 2; correct++; } else { score -= 0.66; wrong++; }
-  });
-
-  // render review
-  renderReview({ name: candidateName, selections, score: Number(score.toFixed(2)), correct, wrong, unattempted });
-  // hide quiz area after slight delay
-  setTimeout(()=>{ $('quiz-section').style.display = 'none'; }, 200);
-  window.scrollTo({top:0, behavior:'smooth'});
+function updateTimer(){
+  const m=Math.floor(state.timeLeft/60);
+  const s=state.timeLeft%60;
+  $('headerTimer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
 }
 
-/* Render review and PDF button */
-function renderReview(rec){
-  const res = $('result'); res.style.display = 'block';
-  const len = QUESTIONS.length;
-  let html = `<div class="fixed-summary"><h2 style="margin:4px 0">${rec.name}</h2>
-    <p><strong>Total:</strong> ${len} &nbsp; | &nbsp; <strong>Correct:</strong> ${rec.correct} &nbsp; | &nbsp; <strong>Incorrect:</strong> ${rec.wrong} &nbsp; | &nbsp; <strong>Unattempted:</strong> ${rec.unattempted} &nbsp; | &nbsp; <strong>Score:</strong> ${rec.score.toFixed(2)}</p>
-    <div style="margin-top:8px"><button id="downloadPdf" class="pdf-btn">Download Questions + Answers (PDF)</button></div>
-    </div>
-    <div class="scroll-key">`;
+$('submitBtn').addEventListener('click',()=>{
+  if(confirm('Submit the quiz now?')) submitQuiz(false);
+});
 
-  QUESTIONS.forEach((q,i)=>{
-    html += `<div class="review-card"><h4 style="margin:0 0 8px">Q${i+1}. ${q.q}</h4>`;
-    q.options.forEach((opt,j)=>{
-      const isCorrect = j === q.answer;
-      const userSel = rec.selections && rec.selections[i] === j;
-      const cls = isCorrect ? 'opt-correct' : 'opt-wrong';
-      const selectedTag = userSel ? ' <strong>(Your choice)</strong>' : '';
-      html += `<div class="${cls}${userSel ? ' user-selected' : ''}">${String.fromCharCode(65+j)}. ${opt}${selectedTag}</div>`;
-    });
-    html += `</div>`;
-  });
-
-  html += `</div>`;
-  res.innerHTML = html;
-
-  // wire download PDF
-  const btn = document.getElementById('downloadPdf');
-  if(btn) btn.addEventListener('click', ()=> generatePdf(rec));
-}
-
-/* PDF generation using jsPDF */
-async function generatePdf(rec){
-  // use jsPDF from UMD
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({unit:'pt', format:'a4'});
-  const margin = 40;
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const lineHeight = 14;
-  let y = margin;
-  doc.setFontSize(12);
-  doc.text(`Prelims Precise – History & Polity 2025`, margin, y);
-  y += 18;
-  doc.setFontSize(10);
-  doc.text(`Name: ${rec.name}    Score: ${rec.score.toFixed(2)}    Correct: ${rec.correct}    Incorrect: ${rec.wrong}    Unattempted: ${rec.unattempted}`, margin, y);
-  y += 20;
-  doc.setFontSize(11);
-
-  for(let i=0;i<QUESTIONS.length;i++){
-    const q = QUESTIONS[i];
-    const qText = `${i+1}. ${q.q}`;
-    const splitQ = doc.splitTextToSize(qText, pageWidth - 2*margin);
-    if(y + (splitQ.length+1)*lineHeight > doc.internal.pageSize.getHeight() - margin){
-      doc.addPage(); y = margin;
-    }
-    doc.text(splitQ, margin, y);
-    y += splitQ.length * lineHeight;
-    // options
-    for(let j=0;j<q.options.length;j++){
-      const optText = `${String.fromCharCode(65+j)}. ${q.options[j]}` + (j===q.answer ? "  [Correct]" : "");
-      const splitOpt = doc.splitTextToSize(optText, pageWidth - 2*margin - 20);
-      if(y + splitOpt.length*lineHeight > doc.internal.pageSize.getHeight() - margin){
-        doc.addPage(); y = margin;
-      }
-      doc.text(splitOpt, margin + 12, y);
-      y += splitOpt.length * lineHeight;
-    }
-    y += 6;
-    if(y > doc.internal.pageSize.getHeight() - margin - 50){
-      doc.addPage(); y = margin;
-    }
+function submitQuiz(auto){
+  clearInterval(state.timer);
+  let correct=0,wrong=0,unattempted=0,score=0;
+  for(let i=0;i<state.questions.length;i++){
+    const user=state.answers[i];
+    if(user===null){unattempted++;continue;}
+    const ans=state.questions[i].answer;
+    if(user===ans){correct++;score+=2;} else {wrong++;score-=0.66;}
   }
-
-  doc.save('Prelims_Precise_History_Polity_2025_QA.pdf');
+  const attempted=state.questions.length-unattempted;
+  $('resName').textContent=state.name;
+  $('resScore').textContent=score.toFixed(2);
+  $('resCorrect').textContent=correct;
+  $('resWrong').textContent=wrong;
+  $('resUn').textContent=unattempted;
+  $('resAttempted').textContent=attempted;
+  drawChart(correct,wrong,unattempted);
+  buildAnswers();
+  document.getElementById('quizLayout').style.display='none';
+  document.getElementById('bottomNav').style.display='none';
+  document.getElementById('resultsPage').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* Wire events */
-document.addEventListener('DOMContentLoaded', ()=>{
-  renderTracker();
-  const startBtn = $('startButton'), submitBtn = $('submitButton'), nameInput = $('name');
-  if(startBtn) startBtn.addEventListener('click', ()=>{
-    const nm = (nameInput && nameInput.value || '').trim();
-    if(!nm){ alert('Please enter your name'); nameInput.focus(); return; }
-    candidateName = nm;
-    $('start-card').style.display = 'none';
-    $('quiz-section').style.display = 'block';
-    renderQuestionsInBatches();
-    renderTracker();
-    timeLeft = 120*60;
-    startTimer();
-    window.addEventListener('scroll', highlightOnScroll, {passive:true});
-    setTimeout(highlightOnScroll, 300);
+function drawChart(c,w,u){
+  const canvas=$('resultChart');const ctx=canvas.getContext('2d');
+  const tot=c+w+u;let start=-Math.PI/2;
+  const drawSeg=(val,color)=>{
+    const ang=(val/tot)*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(110,60);ctx.fillStyle=color;
+    ctx.arc(110,60,50,start,start+ang);ctx.fill();start+=ang;
+  };
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawSeg(c,'#10b981'); drawSeg(w,'#ef4444'); drawSeg(u,'#9ca3af');
+}
+
+function buildAnswers(){
+  const list=$('resultList'); list.innerHTML='';
+  state.questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='result-question';
+    const head=document.createElement('div');head.style.fontWeight='700';
+    head.textContent=(i+1)+'. '+q.q;div.appendChild(head);
+    q.opts.forEach((opt,j)=>{
+      const optDiv=document.createElement('div');
+      if(j===q.answer) optDiv.className='opt-correct';
+      else if(state.answers[i]===j) optDiv.className='opt-wrong';
+      optDiv.textContent=String.fromCharCode(65+j)+'. '+opt;
+      div.appendChild(optDiv);
+    });
+    const meta=document.createElement('div');meta.className='meta-small';
+    meta.textContent='Your: '+(state.answers[i]!=null?String.fromCharCode(65+state.answers[i]):'Not Attempted')+
+      ' | Correct: '+String.fromCharCode(65+q.answer);
+    div.appendChild(meta);list.appendChild(div);
   });
-  if(submitBtn) submitBtn.addEventListener('click', ()=> {
-    if(confirm('Submit quiz now?')) submitQuiz(false);
-  });
-  const btnTop = $('btn-top'); if(btnTop) btnTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+}
+
+window.addEventListener('beforeunload',e=>{
+  if(state.questions.length&&!document.getElementById('resultsPage').style.display){
+    e.preventDefault();e.returnValue='';
+  }
 });
 </script>
 </body>
